@@ -3,7 +3,7 @@ NAME
     DBIx::Class::ResultSet's to JSON-style structures
 
 VERSION
-    version 0.092820
+    version 0.093210
 
 SYNOPSIS
       use CGI::Application::Plugin::ExtJS ':all';
@@ -96,7 +96,7 @@ SEE ALSO
     CGI::Application::Plugin::DBIx::Class.
 
 AUTHOR
-      Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
+    Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2009 by Arthur Axel "fREW" Schmidt.

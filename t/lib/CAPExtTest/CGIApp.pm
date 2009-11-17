@@ -1,5 +1,5 @@
 package CAPExtTest::CGIApp;
-our $VERSION = '0.092820';
+our $VERSION = '0.093210';
 
 
 use strict;

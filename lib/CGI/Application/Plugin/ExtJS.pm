@@ -1,5 +1,5 @@
 package CGI::Application::Plugin::ExtJS;
-our $VERSION = '0.092820';
+our $VERSION = '0.093210';
 
 
 
@@ -43,7 +43,6 @@ sub ext_parcel {
 
 
 
-
 =pod
 
 =head1 NAME
@@ -52,9 +51,7 @@ CGI::Application::Plugin::ExtJS - Convert paginated DBIx::Class::ResultSet's to 
 
 =head1 VERSION
 
-version 0.092820
-
-=pod 
+version 0.093210
 
 =head1 SYNOPSIS
 
@@ -155,11 +152,9 @@ Returns a structure like the following:
 
 L<CGI::Application::Plugin::DBIx::Class>.
 
-
-
 =head1 AUTHOR
 
-  Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
+Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
@@ -168,8 +163,7 @@ This software is copyright (c) 2009 by Arthur Axel "fREW" Schmidt.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 
 
 __END__

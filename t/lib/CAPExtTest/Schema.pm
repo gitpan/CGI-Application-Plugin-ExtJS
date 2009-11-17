@@ -1,5 +1,5 @@
 package CAPExtTest::Schema;
-our $VERSION = '0.092820';
+our $VERSION = '0.093210';
 
 
 use parent 'DBIx::Class::Schema';
