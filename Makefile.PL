@@ -4,39 +4,57 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker;
+use ExtUtils::MakeMaker 6.30;
 
-WriteMakefile(
-  DISTNAME  => 'CGI-Application-Plugin-ExtJS',
-  NAME      => 'CGI::Application::Plugin::ExtJS',
-  AUTHOR    => "Arthur\ Axel\ \"fREW\"\ Schmidt\ \<frioux\+cpan\@gmail\.com\>",
-  ABSTRACT  => "Convert\ paginated\ DBIx\:\:Class\:\:ResultSet\'s\ to\ JSON\-style\ structures",
-  VERSION   => '0.093210',
-  EXE_FILES => [ qw() ],
-  (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
-  PREREQ_PM    => {
-  (eval { ExtUtils::MakeMaker->VERSION(6.55_01) } ? () : (
-    "Test::More" => '0',
-    "parent" => '0',
-    "UNIVERSAL" => '0',
-    "FindBin" => '0',
-    "Test::Deep" => '0',
-  )),
-    "CGI::Application" => '0',
-    "CGI::Application::Plugin::DBH" => '0',
-    "DBIx::Class" => '0.08113',
-    "CGI::Application::Plugin::DBIx::Class" => '0',
-    "Readonly" => '0',
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "Convert paginated DBIx::Class::ResultSet's to JSON-style structures",
+  "AUTHOR" => "Arthur Axel \"fREW\" Schmidt <frioux+cpan\@gmail.com>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-(eval { ExtUtils::MakeMaker->VERSION(6.55_01) } ? (
-  BUILD_REQUIRES    => {
-    "Test::More" => '0',
-    "parent" => '0',
-    "UNIVERSAL" => '0',
-    "FindBin" => '0',
-    "Test::Deep" => '0',
+  "DISTNAME" => "CGI-Application-Plugin-ExtJS",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "CGI::Application::Plugin::ExtJS",
+  "PREREQ_PM" => {
+    "CGI::Application" => 0,
+    "CGI::Application::Plugin::DBH" => 0,
+    "CGI::Application::Plugin::DBIx::Class" => 0,
+    "DBIx::Class" => "0.08113",
+    "FindBin" => 0,
+    "Readonly" => 0,
+    "Test::Deep" => 0,
+    "Test::More" => 0,
+    "UNIVERSAL" => 0,
+    "parent" => 0
   },
-) : ()),
-  test => {TESTS => 't/*.t'}
+  "VERSION" => "1.000000",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

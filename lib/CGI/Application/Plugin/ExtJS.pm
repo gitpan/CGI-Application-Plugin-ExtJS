@@ -1,7 +1,7 @@
 package CGI::Application::Plugin::ExtJS;
-our $VERSION = '0.093210';
-
-
+{
+  $CGI::Application::Plugin::ExtJS::VERSION = '1.000000';
+}
 
 # ABSTRACT: Convert paginated DBIx::Class::ResultSet's to JSON-style structures
 
@@ -9,6 +9,7 @@ use strict;
 use warnings;
 
 require Exporter;
+use Scalar::Util 'blessed';
 
 use base qw(Exporter AutoLoader);
 
@@ -20,7 +21,7 @@ sub ext_paginate {
    my $resultset = shift;
    my $method    = shift || 'TO_JSON';
    return $self->ext_parcel(
-      [map $_->$method, $resultset->all],
+      [map { blessed($_) ? $_->$method : $_ } $resultset->all],
       $resultset->is_paged
          ? ($resultset->pager->total_entries)
          : (),
@@ -40,8 +41,7 @@ sub ext_parcel {
 
 1;
 
-
-
+__END__
 
 =pod
 
@@ -51,7 +51,7 @@ CGI::Application::Plugin::ExtJS - Convert paginated DBIx::Class::ResultSet's to 
 
 =head1 VERSION
 
-version 0.093210
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -158,12 +158,9 @@ Arthur Axel "fREW" Schmidt <frioux+cpan@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Arthur Axel "fREW" Schmidt.
+This software is copyright (c) 2012 by Arthur Axel "fREW" Schmidt.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__

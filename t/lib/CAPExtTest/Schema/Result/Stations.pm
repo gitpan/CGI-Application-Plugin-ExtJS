@@ -1,7 +1,4 @@
 package CAPExtTest::Schema::Result::Stations;
-our $VERSION = '0.093210';
-
-
 use parent 'DBIx::Class';
 use strict;
 use warnings;
