@@ -1,6 +1,6 @@
 package CGI::Application::Plugin::ExtJS;
 {
-  $CGI::Application::Plugin::ExtJS::VERSION = '1.000000';
+  $CGI::Application::Plugin::ExtJS::VERSION = '1.000001';
 }
 
 # ABSTRACT: Convert paginated DBIx::Class::ResultSet's to JSON-style structures
@@ -51,7 +51,7 @@ CGI::Application::Plugin::ExtJS - Convert paginated DBIx::Class::ResultSet's to 
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 
